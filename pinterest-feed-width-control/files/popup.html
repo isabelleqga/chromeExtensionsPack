@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    /* Variáveis para facilitar a manutenção das cores */
+    :root {
+      --primary: #E60023;
+      --primary-hover: #B6001B;
+      --text-dark: #353d4b;
+      --bg-track: #E2E8F0;
+      --bg-value: #F1F5F9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+      padding: 20px; 
+      width: 260px; /* Um pouco mais de espaço para respirar */
+      color: var(--text-dark);
+      background-color: #ffffff;
+    }
+
+    h3 { 
+      margin-bottom: 20px; 
+      font-size: 16px; 
+      font-weight: 600;
+      text-align: center; 
+      font-weight: bold;
+    }
+
+    .item { 
+      margin-bottom: 24px; 
+    }
+
+    label { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      font-size: 13px; 
+      font-weight: 600; 
+      margin-bottom: 12px; 
+    }
+
+    /* Destaque para o valor atual */
+    #valLargura {
+      color: var(--primary);
+      background-color: var(--bg-value);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* -- Estilização Customizada do Range Slider -- */
+    input[type="range"] { 
+      -webkit-appearance: none;
+      width: 100%; 
+      background: transparent;
+    }
+
+    input[type="range"]:focus {
+      outline: none;
+    }
+
+    /* Trilha (Track) */
+    input[type="range"]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: var(--bg-track);
+      border-radius: 4px;
+    }
+
+    /* Bolinha (Thumb) */
+    input[type="range"]::-webkit-slider-thumb {
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -6px; /* Centraliza a bolinha na trilha */
+      box-shadow: 0 2px 4px rgba(230, 0, 35, 0.3);
+      transition: transform 0.1s ease;
+    }
+
+    /* Efeito ao passar o mouse na bolinha */
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    /* -- Estilização do Botão -- */
+    button { 
+      width: 100%; 
+      padding: 12px; 
+      background: var(--primary); 
+      color: white; 
+      border: none; 
+      border-radius: 8px; /* Bordas um pouco menos exageradas, visual mais tech */
+      font-size: 14px;
+      font-weight: 600; 
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      box-shadow: 0 4px 6px -1px rgba(230, 0, 35, 0.2);
+    }
+
+    button:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Efeito de clique no botão */
+    button:active {
+      transform: translateY(2px);
+    }
+  </style>
+</head>
+<body>
+  <h3>Ajustes de Layout</h3>
+  
+  <div class="item">
+    <label>Largura do Feed <span id="valLargura">80%</span></label>
+    <input type="range" id="inputLargura" min="20" max="80" value="80">
+  </div>
+
+  <button id="salvar">Aplicar</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Clean Header",
+  "version": "3.0",
+  "description": "Oculta os ícones de Status, Canais e Comunidades no WhatsApp Web.",
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "css": ["styles.css"]
+    }
+  ]
+}

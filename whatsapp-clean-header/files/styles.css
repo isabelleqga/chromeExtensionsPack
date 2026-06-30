@@ -1,0 +1,22 @@
+/* Oculta a div (container) que possui um span e um botão com os rótulos específicos.
+  Nomes em inglês e português para garantir que funcione independente do idioma do navegador.
+*/
+
+div:has(> span[role="status"]),
+div:has(> span > button[aria-label="Status"]),
+div:has(> span > button[aria-label="Channels"]),
+div:has(> span > button[aria-label="Canais"]),
+div:has(> span > button[aria-label="Communities"]),
+div:has(> span > button[aria-label="Comunidades"]) {
+    display: none !important;
+}
+
+/* Fallback: caso a estrutura do HTML mude, oculta diretamente o botão/span */
+span[role="status"],
+button[aria-label="Status"],
+button[aria-label="Channels"],
+button[aria-label="Canais"],
+button[aria-label="Communities"],
+button[aria-label="Comunidades"] {
+    display: none !important;
+}
