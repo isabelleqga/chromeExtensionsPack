@@ -23,7 +23,7 @@ Como as extensões não estão publicadas na Chrome Web Store, a instalação é
 Remove os ícones de **Status**, **Canais** e **Comunidades** da barra lateral do WhatsApp Web.
 * Mantém os botões desabilitados para evitar interação.
 
-<img src="whatsapp-clean-header/wpp-clean-header.png" width="900">
+<p align="center"><img src="whatsapp-clean-header/wpp-clean-header.png" height="300"></p>
 
 ---
 
@@ -32,6 +32,6 @@ Remove os ícones de **Status**, **Canais** e **Comunidades** da barra lateral d
 Permite controlar a largura do feed do Pinterest, reduzindo a quantidade de colunas exibidas.
 * Ajuste da largura do feed através de um **slider** no popup da extensão.
 
-<img src="pinterest-feed-width-control/pin-width-control.png" width="900">
+<p align="center"><img src="pinterest-feed-width-control/pin-width-control.PNG" width="600"></p>
 
 ---
