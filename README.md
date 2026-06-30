@@ -11,7 +11,7 @@ Como as extensões não estão publicadas na Chrome Web Store, a instalação é
 1. Abra `chrome://extensions/`
 2. Ative o **Modo do desenvolvedor** (Developer mode), no canto superior direito.
 3. Clique em **Carregar sem compactação** (*Load unpacked*).
-4. Selecione a pasta da extensão desejada.
+4. Selecione a pasta files da extensão desejada.
 5. Pronto! 
 
 ---
