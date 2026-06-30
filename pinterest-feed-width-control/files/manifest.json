@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Pinterest Column Control",
   "version": "1.0",
-  "description": "Controla a quantidade a largura do feed da página inicial do Pinterest.",
+  "description": "Controla a largura do feed do Pinterest.",
   "permissions": ["storage"],
   "host_permissions": [
     "*://*.pinterest.com/*",
