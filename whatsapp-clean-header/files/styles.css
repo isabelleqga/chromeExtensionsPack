@@ -1,22 +1,41 @@
-/* Oculta a div (container) que possui um span e um botão com os rótulos específicos.
-  Nomes em inglês e português para garantir que funcione independente do idioma do navegador.
-*/
-
-div:has(> span[role="status"]),
-div:has(> span > button[aria-label="Status"]),
-div:has(> span > button[aria-label="Channels"]),
-div:has(> span > button[aria-label="Canais"]),
-div:has(> span > button[aria-label="Communities"]),
-div:has(> span > button[aria-label="Comunidades"]) {
+/* Ocultar Status */
+body.hide-status div:has(> span[role="status"]),
+body.hide-status div:has(> span > button[aria-label="Status"]),
+body.hide-status span[role="status"],
+body.hide-status button[aria-label="Status"] {
     display: none !important;
 }
 
-/* Fallback: caso a estrutura do HTML mude, oculta diretamente o botão/span */
-span[role="status"],
-button[aria-label="Status"],
-button[aria-label="Channels"],
-button[aria-label="Canais"],
-button[aria-label="Communities"],
-button[aria-label="Comunidades"] {
+/* Ocultar Canais */
+body.hide-channels div:has(> span > button[aria-label="Channels"]),
+body.hide-channels div:has(> span > button[aria-label="Canais"]),
+body.hide-channels button[aria-label="Channels"],
+body.hide-channels button[aria-label="Canais"] {
+    display: none !important;
+}
+
+/* Ocultar Comunidades */
+body.hide-communities div:has(> span > button[aria-label="Communities"]),
+body.hide-communities div:has(> span > button[aria-label="Comunidades"]),
+body.hide-communities button[aria-label="Communities"],
+body.hide-communities button[aria-label="Comunidades"] {
+    display: none !important;
+}
+
+/* Ocultar Meta AI */
+body.hide-meta-ai div:has(> span > button[aria-label="Meta AI"]),
+body.hide-meta-ai button[aria-label="Meta AI"] {
+    display: none !important;
+}
+
+/* Ocultar Divisor (hr) */
+body.hide-divider div[data-testid="navbar-primary-section"] hr,
+body.hide-divider div[data-testid="navbar-primary-section"] div:has(> hr:only-child) {
+    display: none !important;
+}
+
+/* Ocultar Filtros */
+body.hide-filters [aria-label="chat-list-filters"],
+body.hide-filters div:has(> [aria-label="chat-list-filters"]:only-child) {
     display: none !important;
 }
