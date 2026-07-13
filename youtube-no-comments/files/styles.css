@@ -1,0 +1,22 @@
+/* Ocultar seção de comentários (sempre ativo, sem opção de reexibir) */
+body.hide-comments ytd-comments#comments {
+    display: none !important;
+}
+
+/* Ocultar barra lateral, exceto Início, Inscrições, Histórico, Playlists e Assistir mais tarde */
+body.hide-sidebar ytd-guide-entry-renderer {
+    display: none !important;
+}
+
+body.hide-sidebar ytd-guide-entry-renderer:has(> a#endpoint[href="/"]),
+body.hide-sidebar ytd-guide-entry-renderer:has(> a#endpoint[href="/feed/subscriptions"]),
+body.hide-sidebar ytd-guide-entry-renderer:has(> a#endpoint[href="/feed/history"]),
+body.hide-sidebar ytd-guide-entry-renderer:has(> a#endpoint[href="/feed/playlists"]),
+body.hide-sidebar ytd-guide-entry-renderer:has(> a#endpoint[href="/playlist?list=WL"]) {
+    display: block !important;
+}
+
+/* Ocultar o rodapé da barra lateral (links institucionais e copyright) */
+body.hide-sidebar #footer.style-scope.ytd-guide-renderer {
+    display: none !important;
+}
