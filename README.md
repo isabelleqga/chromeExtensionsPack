@@ -35,3 +35,11 @@ Permite controlar a largura do feed do Pinterest, reduzindo a quantidade de colu
 <p align="center"><img src="pinterest-feed-width-control/pin-width-control.PNG" width="600"></p>
 
 ---
+
+## 🤫 Youtube No Comments
+
+Oculta definitivamente os comentários de todos os vídeos do Youtube. De brinde, remove todos os itens da barra lateral, menos **Início**, **Inscrições**, **Histórico**, **Playlists** e **Assistir mais tarde**.
+
+<p align="center"><img src="youtube-no-commets/youtube-no-comments.png" height="300"></p>
+
+---
