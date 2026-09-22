@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Pinterest Column Control",
-  "version": "1.0",
-  "description": "Controla a largura do feed do Pinterest.",
+  "version": "1.1",
+  "description": "Controls the width of the Pinterest feed.",
   "permissions": ["storage"],
   "host_permissions": [
     "*://*.pinterest.com/*",

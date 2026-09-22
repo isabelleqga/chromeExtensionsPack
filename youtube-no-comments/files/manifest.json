@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "YouTube No Comments",
-  "version": "1.0",
-  "description": "Oculta seção de comentários e possibilita ocultar itens da barra lateral.",
+  "version": "1.1",
+  "description": "Hides the comments section and lets you hide sidebar items.",
   "permissions": [
     "storage"
   ],

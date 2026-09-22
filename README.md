@@ -31,7 +31,7 @@ Lets you hide dozens of WhatsApp Web elements, organized into tabs in the extens
 
 The popup language (English/Portuguese) is detected automatically from your browser.
 
-<div align="center"><img src="whatsapp-clean-header/wpp-clean-header.png" alt="whatsapp-preview" height="300" style="border-radius:10px;" /></div>
+<div align="center"><img src="minimalist-whatsapp/minimalist-whatsapp.png" alt="whatsapp-preview" height="300" style="border-radius:10px;" /></div>
 
 ### 📌 Pinterest Feed Width Control
 Lets you control the width of the Pinterest feed, reducing the number of columns shown.

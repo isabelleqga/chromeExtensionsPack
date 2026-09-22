@@ -15,10 +15,10 @@ Each extension lives in its own top-level folder as `<extension-name>/files/`, c
 - `styles.css` — CSS rules gated behind the `hide-*` body classes (when the extension uses that pattern)
 - `icon.png` — toolbar icon
 
-Screenshots/preview images referenced by the root `README.md` live alongside each extension folder (outside `files/`), e.g. `whatsapp-clean-header/wpp-clean-header.png`.
+Screenshots/preview images referenced by the root `README.md` live alongside each extension folder (outside `files/`), e.g. `minimalist-whatsapp/minimalist-whatsapp.png`.
 
 Current extensions:
-- `whatsapp-clean-header/` — hides Status/Canais/Comunidades/Meta AI/Filtros icons on WhatsApp Web
+- `minimalist-whatsapp/` — hides dozens of WhatsApp Web elements, grouped into three popup tabs (Navbar, Chatlist, Chats); see its own preference-grouping note below
 - `pinterest-feed-width-control/` — controls Pinterest feed column width via a popup slider
 - `youtube-no-comments/` — hides YouTube comments (always on) and lets the sidebar be hidden
 
@@ -34,7 +34,7 @@ There is no build/lint/test command. To try changes:
 
 All three extensions follow the same storage-driven toggle pattern between `popup.js` and `content.js`:
 
-1. **Preferences are a flat list of string keys** (e.g. `const preferences = ['status', 'channels', ...]`) mirrored between `popup.js` and `content.js` — keep these two lists in sync manually when adding/removing a toggle.
+1. **Preferences are a flat list of string keys** (e.g. `const preferences = ['status', 'channels', ...]`) mirrored between `popup.js` and `content.js` — keep these two lists in sync manually when adding/removing a toggle. In `minimalist-whatsapp`, `popup.js` splits this into one array per popup tab (`NAVBAR_PREFERENCES`, `CHATLIST_PREFERENCES`, `CHATS_PREFERENCES`) that get spread into a single flat `PREFERENCES` array — `content.js` still just needs one flat array containing the same keys, order doesn't matter there.
 2. **`popup.js`** reads current values from `chrome.storage` on open to set checkbox state, and writes a single key via `chrome.storage.local.set({...})` on each checkbox `change` event.
 3. **`content.js`** reads the same keys on load and applies them (usually via `document.body.classList.add/remove('hide-<key>')`, matched by CSS in `styles.css`), then subscribes to `chrome.storage.onChanged` to re-apply live without a page reload.
 4. Storage area is **not consistent across extensions** — WhatsApp/YouTube use `chrome.storage.local`; Pinterest uses `chrome.storage.sync` (and pushes changes via an explicit tab reload from the popup instead of a live listener, plus a `MutationObserver` in `content.js` to reassert injected styles against Pinterest's own re-renders). Match whichever storage area and update mechanism the extension you're editing already uses.
@@ -42,4 +42,9 @@ All three extensions follow the same storage-driven toggle pattern between `popu
 
 ## Language
 
-READMEs, UI copy, and code comments are in Brazilian Portuguese. Keep new user-facing strings and comments consistent with that unless told otherwise.
+Code comments across all three extensions are in Brazilian Portuguese — keep new comments consistent with that.
+
+User-facing strings vary by surface:
+- `minimalist-whatsapp`'s popup UI is bilingual: `popup.js` holds an `en`/`pt` string dictionary and auto-detects the language from `navigator.language` (no manual switch). Add new toggle labels to both.
+- `pinterest-feed-width-control` and `youtube-no-comments` popup UIs are Portuguese-only.
+- The root `README.md` is the English version; `README.pt-BR.md` is its Portuguese translation, cross-linked at the top of each. Update both together.

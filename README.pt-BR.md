@@ -31,7 +31,7 @@ Permite ocultar dezenas de elementos do WhatsApp Web, organizados em abas no pop
 
 O idioma do popup (Português/Inglês) é detectado automaticamente a partir do navegador.
 
-<div align="center"><img src="whatsapp-clean-header/wpp-clean-header.png" alt="whatsapp-preview" height="300" style="border-radius:10px;" /></div>
+<div align="center"><img src="minimalist-whatsapp/minimalist-whatsapp.png" alt="whatsapp-preview" height="300" style="border-radius:10px;" /></div>
 
 ### 📌 Controle de Largura do Feed do Pinterest
 Permite controlar a largura do feed do Pinterest, reduzindo a quantidade de colunas exibidas.
