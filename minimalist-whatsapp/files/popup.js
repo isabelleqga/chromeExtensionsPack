@@ -107,7 +107,7 @@ chrome.storage.local.get(PREFERENCES, (result) => {
   PREFERENCES.forEach((key) => {
     const checkbox = document.getElementById(key);
     if (checkbox) {
-      checkbox.checked = result[key] !== false; // default é true (ocultar)
+      checkbox.checked = result[key] === true; // default é false (o usuário ativa um por um)
     }
   });
 

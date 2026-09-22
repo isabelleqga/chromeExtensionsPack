@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Minimalist WhatsApp",
-  "version": "9.0",
+  "version": "9.1",
   "description": "Lets you hide navbar, chatlist, and chat card elements on WhatsApp Web, organized into tabs by area.",
   "permissions": [
     "storage"

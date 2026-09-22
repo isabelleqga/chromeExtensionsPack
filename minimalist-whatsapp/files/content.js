@@ -9,8 +9,8 @@ const preferences = [
 function applyStyles(result) {
     preferences.forEach(key => {
         const className = `hide-${key}`;
-        // Padrão é ocultar (true); só deixa de ocultar se o usuário desativou explicitamente
-        if (result[key] !== false) {
+        // Padrão é não ocultar (false); só oculta se o usuário ativou explicitamente
+        if (result[key] === true) {
             document.body.classList.add(className);
         } else {
             document.body.classList.remove(className);
