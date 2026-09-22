@@ -1,3 +1,11 @@
+/* Ocultar ícone de Chamadas (navbar) */
+body.hide-calls div:has(> span > button[aria-label="Calls"]),
+body.hide-calls div:has(> span > button[aria-label="Chamadas"]),
+body.hide-calls button[aria-label="Calls"],
+body.hide-calls button[aria-label="Chamadas"] {
+    display: none !important;
+}
+
 /* Ocultar Status */
 body.hide-status div:has(> span[role="status"]),
 body.hide-status div:has(> span > button[aria-label="Status"]),
@@ -34,8 +42,63 @@ body.hide-divider div[data-testid="navbar-primary-section"] div:has(> hr:only-ch
     display: none !important;
 }
 
+/* Ocultar Rodapé (perfil/ajustes) */
+body.hide-footer [data-testid="navbar-footer-section"] {
+    display: none !important;
+}
+
 /* Ocultar Filtros */
 body.hide-filters [aria-label="chat-list-filters"],
+body.hide-filters [data-testid="filter-button"],
 body.hide-filters div:has(> [aria-label="chat-list-filters"]:only-child) {
+    display: none !important;
+}
+
+/* Ocultar Título da Gaveta (ex: drawer de nova conversa) */
+/* Usa visibility (não display) para preservar o espaço do elemento e não deslocar o botão de menu (três pontinhos) ao lado */
+body.hide-drawer-title [data-testid="drawer-title-body"] {
+    visibility: hidden !important;
+}
+
+/* Ocultar Detalhes da Mensagem (linha principal do card do chat) */
+body.hide-message-details [data-testid="cell-frame-primary-detail"] {
+    display: none !important;
+}
+
+/* Ocultar Última Mensagem (linha secundária do card do chat) */
+body.hide-last-message [data-testid="cell-frame-secondary"] {
+    display: none !important;
+}
+
+/* Ocultar Info de Criptografia */
+body.hide-encryption-info [data-testid="chatlist-e2e-message"],
+body.hide-encryption-info [data-testid="chatlist-e2e-message-link"] {
+    display: none !important;
+}
+
+/* Ocultar Painel Inicial (tela antes de abrir uma conversa) */
+body.hide-intro-panel [data-testid="intro-panel"] {
+    display: none !important;
+}
+
+/* Ocultar Conversas Bloqueadas */
+body.hide-locked-chats [aria-label="Locked chats"],
+body.hide-locked-chats [aria-label="Conversas bloqueadas"] {
+    display: none !important;
+}
+
+/* Ocultar Barra de Busca */
+body.hide-search [data-testid="chat-list-search-container"],
+body.hide-search div:has(> [data-testid="chat-list-search-container"]:only-child) {
+    display: none !important;
+}
+
+/* Ocultar Botão Nova Conversa */
+body.hide-new-chat button[aria-label="New chat"],
+body.hide-new-chat button[aria-label="Nova conversa"],
+body.hide-new-chat div:has(> button[aria-label="New chat"]),
+body.hide-new-chat div:has(> button[aria-label="Nova conversa"]),
+body.hide-new-chat div:has(> span > button[aria-label="New chat"]),
+body.hide-new-chat div:has(> span > button[aria-label="Nova conversa"]) {
     display: none !important;
 }

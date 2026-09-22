@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "WhatsApp Clean Header",
-  "version": "5.0",
-  "description": "Possibilita ocultar os ícones de Status, Canais, Comunidades, Meta AI e Filtros no WhatsApp Web.",
+  "name": "Minimalist WhatsApp",
+  "version": "8.9",
+  "description": "Possibilita ocultar elementos da navbar, chatlist e cards de chat do WhatsApp Web, organizados em abas por área.",
   "permissions": [
     "storage"
   ],

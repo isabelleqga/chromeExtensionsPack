@@ -11,7 +11,6 @@
       --surface-color: #ffffff;
       --text-color: #111b21;
       --border-color: #e9edef;
-      --title-color: #00a884;
       --primary-color: #00a884;
       --slider-bg: #cbd5e1;
       --slider-dot: #ffffff;
@@ -22,21 +21,20 @@
     /* ========================================= */
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg-color: #1d1f1f;        
-        --surface-color: #161717;   
-        --text-color: #e9edef;      
-        --border-color: #222e35;    
-        --title-color: #e9edef;
-        --primary-color: #00a884;   
-        --slider-bg: #374045;       
-        --slider-dot: #e9edef;     
+        --bg-color: #1d1f1f;
+        --surface-color: #161717;
+        --text-color: #e9edef;
+        --border-color: #222e35;
+        --primary-color: #00a884;
+        --slider-bg: #374045;
+        --slider-dot: #e9edef;
       }
     }
 
     /* Estilo Geral */
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      width: 270px;
+      width: 300px;
       padding: 16px;
       margin: 0;
       background-color: var(--bg-color);
@@ -53,15 +51,67 @@
       transition: background-color 0.3s;
     }
 
+    /* Cabeçalho */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
     h3 {
-      margin: 0 0 16px 0;
-      font-size: 16px;
-      color: var(--title-color);
-      text-align: center;
+      margin: 0;
+      font-size: 15px;
       font-weight: 600;
+      color: var(--text-color);
+    }
+
+    .github-link {
+      display: flex;
+      align-items: center;
+      color: var(--text-color);
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+
+    .github-link:hover {
+      opacity: 1;
+    }
+
+    /* Abas */
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 8px;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
-      transition: border-color 0.3s;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 8px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-color);
+      opacity: 0.55;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .tab-btn.active {
+      opacity: 1;
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     /* Linhas das Opções */
@@ -85,6 +135,7 @@
       font-weight: 500;
       flex-grow: 1;
       user-select: none;
+      padding-right: 8px;
     }
 
     /* ========================================= */
@@ -135,59 +186,176 @@
       transform: translateX(18px);
       background-color: #ffffff; /* Fica sempre branco quando ativado */
     }
+
+    /* Toggle travado (dependente do "Cabeçalho inteiro") */
+    .switch input:disabled + .slider {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .toggle-row:has(input:disabled) .toggle-label {
+      opacity: 0.5;
+    }
   </style>
 </head>
 <body>
-  
-  <div class="container">
-    <h3>Ocultar Elementos</h3>
 
-    <div class="toggle-row">
-      <label for="status" class="toggle-label">Status</label>
-      <label class="switch">
-        <input type="checkbox" id="status">
-        <span class="slider"></span>
-      </label>
+  <div class="container">
+    <div class="header-row">
+      <h3 data-i18n="title">WhatsApp Minimalista</h3>
+      <a class="github-link" href="https://github.com/isabelleqga/chromeExtensionsPack" target="_blank" rel="noopener noreferrer" title="GitHub">
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
     </div>
-    
-    <div class="toggle-row">
-      <label for="channels" class="toggle-label">Canais</label>
-      <label class="switch">
-        <input type="checkbox" id="channels">
-        <span class="slider"></span>
-      </label>
+
+    <div class="tabs">
+      <button type="button" class="tab-btn" data-tab="navbar" data-i18n="tabNavbar">Navbar</button>
+      <button type="button" class="tab-btn" data-tab="chatlist" data-i18n="tabChatlist">Chatlist</button>
+      <button type="button" class="tab-btn" data-tab="chats" data-i18n="tabChats">Chats</button>
     </div>
-    
-    <div class="toggle-row">
-      <label for="communities" class="toggle-label">Comunidades</label>
-      <label class="switch">
-        <input type="checkbox" id="communities">
-        <span class="slider"></span>
-      </label>
+
+    <div class="tab-content" id="tab-navbar">
+      <div class="toggle-row">
+        <label for="header" class="toggle-label" data-i18n="header">Cabeçalho inteiro</label>
+        <label class="switch">
+          <input type="checkbox" id="header">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="calls" class="toggle-label" data-i18n="calls">Chamadas</label>
+        <label class="switch">
+          <input type="checkbox" id="calls">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="status" class="toggle-label" data-i18n="status">Status</label>
+        <label class="switch">
+          <input type="checkbox" id="status">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="channels" class="toggle-label" data-i18n="channels">Canais</label>
+        <label class="switch">
+          <input type="checkbox" id="channels">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="communities" class="toggle-label" data-i18n="communities">Comunidades</label>
+        <label class="switch">
+          <input type="checkbox" id="communities">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="divider" class="toggle-label" data-i18n="divider">Divisor</label>
+        <label class="switch">
+          <input type="checkbox" id="divider">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="meta-ai" class="toggle-label" data-i18n="metaAi">Meta AI</label>
+        <label class="switch">
+          <input type="checkbox" id="meta-ai">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="footer" class="toggle-label" data-i18n="footer">Rodapé</label>
+        <label class="switch">
+          <input type="checkbox" id="footer">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
-    
-    <div class="toggle-row">
-      <label for="meta-ai" class="toggle-label">Meta AI</label>
-      <label class="switch">
-        <input type="checkbox" id="meta-ai">
-        <span class="slider"></span>
-      </label>
+
+    <div class="tab-content" id="tab-chatlist">
+      <div class="toggle-row">
+        <label for="drawer-title" class="toggle-label" data-i18n="drawerTitle">Título da gaveta</label>
+        <label class="switch">
+          <input type="checkbox" id="drawer-title">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="new-chat" class="toggle-label" data-i18n="newChat">Botão nova conversa</label>
+        <label class="switch">
+          <input type="checkbox" id="new-chat">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="search" class="toggle-label" data-i18n="search">Barra de busca</label>
+        <label class="switch">
+          <input type="checkbox" id="search">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="filters" class="toggle-label" data-i18n="filters">Filtros</label>
+        <label class="switch">
+          <input type="checkbox" id="filters">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="locked-chats" class="toggle-label" data-i18n="lockedChats">Conversas bloqueadas</label>
+        <label class="switch">
+          <input type="checkbox" id="locked-chats">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="encryption-info" class="toggle-label" data-i18n="encryptionInfo">Info de criptografia</label>
+        <label class="switch">
+          <input type="checkbox" id="encryption-info">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="intro-panel" class="toggle-label" data-i18n="introPanel">Painel inicial</label>
+        <label class="switch">
+          <input type="checkbox" id="intro-panel">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
-    
-    <div class="toggle-row">
-      <label for="divider" class="toggle-label">Divisor</label>
-      <label class="switch">
-        <input type="checkbox" id="divider">
-        <span class="slider"></span>
-      </label>
-    </div>
-    
-    <div class="toggle-row">
-      <label for="filters" class="toggle-label">Filtros</label>
-      <label class="switch">
-        <input type="checkbox" id="filters">
-        <span class="slider"></span>
-      </label>
+
+    <div class="tab-content" id="tab-chats">
+      <div class="toggle-row">
+        <label for="message-details" class="toggle-label" data-i18n="messageDetails">Detalhes da mensagem</label>
+        <label class="switch">
+          <input type="checkbox" id="message-details">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <label for="last-message" class="toggle-label" data-i18n="lastMessage">Última mensagem</label>
+        <label class="switch">
+          <input type="checkbox" id="last-message">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
   </div>
 

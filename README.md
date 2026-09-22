@@ -1,27 +1,33 @@
 # Chrome Extensions Pack
 
-Coleção de pequenas extensões para o **Google Chrome** que ~~fazem quase nada~~ resolvem incômodos específicos do dia a dia. São simples, leves e focadas em fazer uma única mudança estética que me incomodava.
+A collection of small extensions for **Google Chrome** that ~~do almost nothing~~ fix specific everyday annoyances. They're simple, lightweight, and focused on making a single change that used to bother me.
+
+🇧🇷 [Versão em português](README.pt-BR.md)
 
 ---
 
-## Instalação
+## Installation
 
-Como as extensões não estão publicadas na Chrome Web Store, a instalação é manual.
+Since these extensions aren't published on the Chrome Web Store, installation is manual.
 
-1. Abra `chrome://extensions/`
-2. Ative o **Modo do desenvolvedor** (Developer mode), no canto superior direito.
-3. Clique em **Carregar sem compactação** (*Load unpacked*).
-4. Selecione a pasta files da extensão desejada.
-5. Pronto! 
+1. Open `chrome://extensions/`
+2. Enable **Developer mode**, top right corner.
+3. Click **Load unpacked**.
+4. Select the `files` folder of the extension you want.
+5. Done!
 
 ---
 
-# Extensões
+# Extensions
 
-## 💬 WhatsApp Clean Header
+## 💬 Minimalist WhatsApp
 
-Remove os ícones de **Status**, **Canais** e **Comunidades** da barra lateral do WhatsApp Web.
-* Mantém os botões desabilitados para evitar interação.
+Lets you hide dozens of WhatsApp Web elements, organized into tabs in the extension popup:
+* **Navbar** — Entire header, Calls, Status, Channels, Communities, Divider, Meta AI, Footer icons. Turning on "Entire header" locks and force-hides everything else in this tab.
+* **Chatlist** — Drawer title, New chat button, Search bar, Filters, Locked chats, Encryption info, Intro panel.
+* **Chats** — Message details, Last message.
+
+The popup language (English/Portuguese) is detected automatically from your browser.
 
 <p align="center"><img src="whatsapp-clean-header/wpp-clean-header.png" height="300"></p>
 
@@ -29,8 +35,8 @@ Remove os ícones de **Status**, **Canais** e **Comunidades** da barra lateral d
 
 ## 📌 Pinterest Feed Width Control
 
-Permite controlar a largura do feed do Pinterest, reduzindo a quantidade de colunas exibidas.
-* Ajuste da largura do feed através de um **slider** no popup da extensão.
+Lets you control the width of the Pinterest feed, reducing the number of columns shown.
+* Adjust the feed width with a **slider** in the extension popup.
 
 <p align="center"><img src="pinterest-feed-width-control/pin-width-control.PNG" width="600"></p>
 
@@ -38,7 +44,7 @@ Permite controlar a largura do feed do Pinterest, reduzindo a quantidade de colu
 
 ## 🤫 Youtube No Comments
 
-Oculta definitivamente os comentários de todos os vídeos do Youtube. De brinde, remove todos os itens da barra lateral, menos **Início**, **Inscrições**, **Histórico**, **Playlists** e **Assistir mais tarde**.
+Permanently hides comments on every YouTube video. As a bonus, it removes every sidebar item except **Home**, **Subscriptions**, **History**, **Playlists**, and **Watch later**.
 
 <p align="center"><img src="youtube-no-comments/youtube-no-comments.png" height="300"></p>
 

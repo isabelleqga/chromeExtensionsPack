@@ -1,12 +1,16 @@
 // Lista de chaves que representam as classes CSS e os IDs no popup
-const preferences = ['status', 'channels', 'communities', 'meta-ai', 'divider', 'filters'];
+const preferences = [
+    'header', 'calls', 'status', 'channels', 'communities', 'divider', 'meta-ai', 'footer',
+    'drawer-title', 'new-chat', 'search', 'filters', 'encryption-info', 'intro-panel', 'locked-chats',
+    'message-details', 'last-message',
+];
 
 // Função para aplicar as classes no body baseado nas preferências
 function applyStyles(result) {
     preferences.forEach(key => {
         const className = `hide-${key}`;
-        // Se a preferência for true (toggle ativado para ocultar), adiciona a classe
-        if (result[key] === true) {
+        // Padrão é ocultar (true); só deixa de ocultar se o usuário desativou explicitamente
+        if (result[key] !== false) {
             document.body.classList.add(className);
         } else {
             document.body.classList.remove(className);
