@@ -34,12 +34,17 @@ O idioma do popup (Português/Inglês) é detectado automaticamente a partir do 
 <div align="center"><img src="minimalist-whatsapp/minimalist-whatsapp.png" alt="whatsapp-preview" height="300" style="border-radius:10px;" /></div>
 
 ### 📌 Controle de Largura do Feed do Pinterest
-Permite controlar a largura do feed do Pinterest, reduzindo a quantidade de colunas exibidas.
-- Ajuste da largura do feed através de um **slider** no popup da extensão.
+Permite controlar a largura do feed do Pinterest, reduzindo a quantidade de colunas exibidas, além de um toggle de modo escuro, já que o Pinterest não tem um nativo.
+- Ajuste da largura do feed através de um **slider** no popup da extensão — as mudanças são aplicadas na hora, sem precisar recarregar a página.
+- Ative o **modo escuro** no Pinterest direto pelo popup.
+
+O idioma do popup (Português/Inglês) é detectado automaticamente a partir do navegador.
 
 <div align="center"><img src="pinterest-feed-width-control/pin-width-control.PNG" alt="pinterest-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
 
 ### 🤫 Youtube Sem Comentários
 Oculta definitivamente os comentários de todos os vídeos do Youtube. De brinde, remove todos os itens da barra lateral, menos **Início**, **Inscrições**, **Histórico**, **Playlists** e **Assistir mais tarde**.
+
+O idioma do popup (Português/Inglês) é detectado automaticamente a partir do navegador.
 
 <div align="center"><img src="youtube-no-comments/youtube-no-comments.png" alt="youtube-preview" width="auto" height="auto" style="border-radius:5px;" /></div>

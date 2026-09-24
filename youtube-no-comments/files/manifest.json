@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "YouTube No Comments",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Hides the comments section and lets you hide sidebar items.",
   "permissions": [
     "storage"

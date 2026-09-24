@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <style>
@@ -7,9 +7,24 @@
     :root {
       --primary: #E60023;
       --primary-hover: #B6001B;
+      --bg-color: #ffffff;
       --text-dark: #353d4b;
       --bg-track: #E2E8F0;
       --bg-value: #F1F5F9;
+      --value-text: var(--primary);
+      --slider-bg: #cbd5e1;
+      --slider-dot: #ffffff;
+    }
+
+    /* O popup segue o mesmo toggle de modo escuro que controla o Pinterest */
+    :root[data-theme="dark"] {
+      --bg-color: #1d1f1f;
+      --text-dark: #f1f1f1;
+      --bg-track: #374045;
+      --bg-value: #2a2d2d;
+      --value-text: #ffffff;
+      --slider-bg: #374045;
+      --slider-dot: #e9edef;
     }
 
     * {
@@ -18,38 +33,39 @@
       padding: 0;
     }
 
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-      padding: 20px; 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 20px;
       width: 260px; /* Um pouco mais de espaço para respirar */
       color: var(--text-dark);
-      background-color: #ffffff;
+      background-color: var(--bg-color);
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    h3 { 
-      margin-bottom: 20px; 
-      font-size: 16px; 
+    h3 {
+      margin-bottom: 20px;
+      font-size: 16px;
       font-weight: 600;
-      text-align: center; 
+      text-align: center;
       font-weight: bold;
     }
 
-    .item { 
-      margin-bottom: 24px; 
+    .item {
+      margin-bottom: 24px;
     }
 
-    label { 
-      display: flex; 
-      justify-content: space-between; 
+    label {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      font-size: 13px; 
-      font-weight: 600; 
-      margin-bottom: 12px; 
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
     }
 
     /* Destaque para o valor atual */
     #valLargura {
-      color: var(--primary);
+      color: var(--value-text);
       background-color: var(--bg-value);
       padding: 4px 8px;
       border-radius: 12px;
@@ -58,9 +74,9 @@
     }
 
     /* -- Estilização Customizada do Range Slider -- */
-    input[type="range"] { 
+    input[type="range"] {
       -webkit-appearance: none;
-      width: 100%; 
+      width: 100%;
       background: transparent;
     }
 
@@ -95,40 +111,84 @@
       transform: scale(1.15);
     }
 
-    /* -- Estilização do Botão -- */
-    button { 
-      width: 100%; 
-      padding: 12px; 
-      background: var(--primary); 
-      color: white; 
-      border: none; 
-      border-radius: 8px; /* Bordas um pouco menos exageradas, visual mais tech */
-      font-size: 14px;
-      font-weight: 600; 
+    /* -- Linha da opção de modo escuro -- */
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    .toggle-row label {
+      margin-bottom: 0;
+    }
+
+    /* -- Estilização do Botão Toggle (Switch) -- */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 42px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider-track {
+      position: absolute;
       cursor: pointer;
-      transition: background-color 0.2s, transform 0.1s;
-      box-shadow: 0 4px 6px -1px rgba(230, 0, 35, 0.2);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--slider-bg);
+      transition: 0.3s;
+      border-radius: 34px;
     }
 
-    button:hover {
-      background: var(--primary-hover);
+    .slider-track:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--slider-dot);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px 12px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5A623' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41'/%3E%3C/svg%3E");
+      transition: 0.3s;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-    /* Efeito de clique no botão */
-    button:active {
-      transform: translateY(2px);
+    input:checked + .slider-track {
+      background-color: var(--primary);
+    }
+
+    input:checked + .slider-track:before {
+      transform: translateX(18px);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235B6472'%3E%3Cpath d='M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z'/%3E%3C/svg%3E");
     }
   </style>
 </head>
 <body>
-  <h3>Ajustes de Layout</h3>
-  
+  <h3 data-i18n="title">Layout Settings</h3>
+
   <div class="item">
-    <label>Largura do Feed <span id="valLargura">80%</span></label>
+    <label><span data-i18n="feedWidth">Feed Width</span> <span id="valLargura">80%</span></label>
     <input type="range" id="inputLargura" min="20" max="80" value="80">
   </div>
 
-  <button id="salvar">Aplicar</button>
+  <div class="item toggle-row">
+    <label for="darkMode" data-i18n="darkMode">Dark Mode</label>
+    <label class="switch">
+      <input type="checkbox" id="darkMode">
+      <span class="slider-track"></span>
+    </label>
+  </div>
 
   <script src="popup.js"></script>
 </body>

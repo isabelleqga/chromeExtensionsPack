@@ -1,3 +1,37 @@
+const translations = {
+    en: {
+        title: 'YouTube No Comments',
+        comments: 'Hide comments',
+        commentsHint: "stupidity doesn't take a day off",
+        sidebar: 'Hide sidebar',
+    },
+    pt: {
+        title: 'YouTube Sem Comentários',
+        comments: 'Ocultar comentários',
+        commentsHint: 'estupidez não tira day-off',
+        sidebar: 'Ocultar barra lateral',
+    },
+};
+
+// Detecta o idioma do navegador; usa português para qualquer variante pt-*, inglês para o resto
+function detectBrowserLanguage() {
+    const browserLang = (navigator.language || 'en').toLowerCase();
+    return browserLang.startsWith('pt') ? 'pt' : 'en';
+}
+
+function applyLanguage(lang) {
+    const dict = translations[lang] || translations.en;
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+    });
+}
+
+// Idioma: sempre detectado a partir do navegador, sem opção de troca manual
+applyLanguage(detectBrowserLanguage());
+
 // "Ocultar comentários" é travado sempre ativo e não pode mais ser desligado
 const commentsCheckbox = document.getElementById('comments');
 if (commentsCheckbox) {

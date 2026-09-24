@@ -44,7 +44,5 @@ All three extensions follow the same storage-driven toggle pattern between `popu
 
 Code comments across all three extensions are in Brazilian Portuguese — keep new comments consistent with that.
 
-User-facing strings vary by surface:
-- `minimalist-whatsapp`'s popup UI is bilingual: `popup.js` holds an `en`/`pt` string dictionary and auto-detects the language from `navigator.language` (no manual switch). Add new toggle labels to both.
-- `pinterest-feed-width-control` and `youtube-no-comments` popup UIs are Portuguese-only.
+User-facing strings: all three popup UIs are bilingual — `popup.js` holds an `en`/`pt` string dictionary (English default) and auto-detects the language from `navigator.language` (no manual switch). Add new toggle labels to both.
 - The root `README.md` is the English version; `README.pt-BR.md` is its Portuguese translation, cross-linked at the top of each. Update both together.

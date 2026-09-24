@@ -34,12 +34,17 @@ The popup language (English/Portuguese) is detected automatically from your brow
 <div align="center"><img src="minimalist-whatsapp/minimalist-whatsapp.png" alt="whatsapp-preview" height="300" style="border-radius:10px;" /></div>
 
 ### 📌 Pinterest Feed Width Control
-Lets you control the width of the Pinterest feed, reducing the number of columns shown.
-- Adjust the feed width with a **slider** in the extension popup.
+Lets you control the width of the Pinterest feed, reducing the number of columns shown, and adds a dark mode toggle since Pinterest doesn't have one.
+- Adjust the feed width with a **slider** in the extension popup — changes apply live, no reload needed.
+- Toggle **dark mode** for Pinterest itself, straight from the popup.
+
+The popup language (English/Portuguese) is detected automatically from your browser.
 
 <div align="center"><img src="pinterest-feed-width-control/pin-width-control.PNG" alt="pinterest-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
 
 ### 🤫 Youtube No Comments
 Permanently hides comments on every YouTube video. As a bonus, it removes every sidebar item except **Home**, **Subscriptions**, **History**, **Playlists**, and **Watch later**.
+
+The popup language (English/Portuguese) is detected automatically from your browser.
 
 <div align="center"><img src="youtube-no-comments/youtube-no-comments.png" alt="youtube-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
