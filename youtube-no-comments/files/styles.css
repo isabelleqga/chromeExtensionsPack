@@ -20,3 +20,41 @@ body.hide-sidebar ytd-guide-entry-renderer:has(> a#endpoint[href="/playlist?list
 body.hide-sidebar #footer.style-scope.ytd-guide-renderer {
     display: none !important;
 }
+
+/* Tag de tempo na lista (Assistir mais tarde): selo escuro com uma bolinha colorida */
+ytd-playlist-video-renderer ytd-thumbnail {
+    position: relative;
+}
+
+.wl-age-tag {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 5;
+    padding: 2px 6px 2px 18px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.82);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.wl-age-tag::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    border-radius: 50%;
+    background: var(--wl-dot, #4cc2ff);
+}
+
+/* Paleta amigável para daltonismo: azul (novo) -> verde -> laranja -> vermelho (mais antigo) */
+.wl-age-tag[data-level="fresh"]  { --wl-dot: #4cc2ff; }
+.wl-age-tag[data-level="recent"] { --wl-dot: #9ad9a8; }
+.wl-age-tag[data-level="aging"]  { --wl-dot: #ffb347; }
+.wl-age-tag[data-level="old"]    { --wl-dot: #ff453a; }

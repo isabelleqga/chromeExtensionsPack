@@ -45,6 +45,8 @@ The popup language (English/Portuguese) is detected automatically from your brow
 ### 🤫 Youtube No Comments
 Permanently hides comments on every YouTube video. As a bonus, it removes every sidebar item except **Home**, **Subscriptions**, **History**, **Playlists**, and **Watch later**.
 
+It also tags each video in your **Watch later** playlist with how long it has been waiting. YouTube doesn't expose the date a video was added, so you record the order once (sort by *Date added (oldest)*, then turn on **Watch Later tags** in the popup and press **Record**). Those videos show "#N", and videos added afterwards show the real number of days. A colored dot shows how long a video has been waiting: blue (under 7 days), green (7 to 13), orange (14 to 29) and red (30 or more). The "#N" tags use the same colors by thirds of the list, with the oldest third in red.
+
 The popup language (English/Portuguese) is detected automatically from your browser.
 
-<div align="center"><img src="youtube-no-comments/youtube-no-comments.png" alt="youtube-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
+<div align="center"><img src="youtube-no-comments/youtube-no-comments.png" alt="youtube-preview" width="68%" style="border-radius:5px;" /> <img src="youtube-no-comments/youtube-no-comments-tags.png" alt="youtube-watch-later-tags-preview" width="27%" style="border-radius:5px;" /></div>

@@ -4,12 +4,28 @@ const translations = {
         comments: 'Hide comments',
         commentsHint: "stupidity doesn't take a day off",
         sidebar: 'Hide sidebar',
+        wlTitle: 'Watch Later tags',
+        wlHint: 'Open Watch Later, sort by "Date added (oldest)", then record the order. Switch back to manual sort afterwards.',
+        wlButton: 'Record',
+        wlButtonHint: 'Only press this if there are videos in your list without a tag. After the first recording, new videos are tagged automatically with the date they were added.',
+        wlNone: 'No order recorded yet',
+        wlRunning: 'Recording...',
+        wlError: 'Open the Watch Later playlist first',
+        wlDone: (n, date) => `${n} videos · ${date}`,
     },
     pt: {
         title: 'YouTube Sem Comentários',
         comments: 'Ocultar comentários',
         commentsHint: 'estupidez não tira day-off',
         sidebar: 'Ocultar barra lateral',
+        wlTitle: 'Tags do Assistir mais tarde',
+        wlHint: 'Abra o Assistir mais tarde, ordene por "Data de inclusão (mais antigo)" e grave a ordem. Depois volte para a ordem manual.',
+        wlButton: 'Gravar',
+        wlButtonHint: 'Só clique aqui se houver vídeos na lista sem tag. Depois da primeira gravação, os vídeos novos são marcados automaticamente com a data em que foram adicionados.',
+        wlNone: 'Nenhuma ordem gravada ainda',
+        wlRunning: 'Gravando...',
+        wlError: 'Abra primeiro a playlist Assistir mais tarde',
+        wlDone: (n, date) => `${n} vídeos · ${date}`,
     },
 };
 
@@ -25,7 +41,13 @@ function applyLanguage(lang) {
 
     document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.textContent = dict[key];
+        if (typeof dict[key] === 'string') el.textContent = dict[key];
+    });
+
+    // Textos longos ficam no tooltip (title) para não ocupar espaço no popup
+    document.querySelectorAll('[data-i18n-title]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-title');
+        if (typeof dict[key] === 'string') el.title = dict[key];
     });
 }
 
@@ -63,3 +85,55 @@ preferences.forEach(key => {
         });
     }
 });
+
+// ===== Tags de tempo no Assistir mais tarde =====
+// Ao contrário dos outros toggles, este começa desligado; a linha de gravar só aparece quando ligado
+const wlTagsCheckbox = document.getElementById('wlTags');
+const wlRecordRow = document.getElementById('wlRecordRow');
+
+chrome.storage.local.get(['wlTags'], (result) => {
+    wlTagsCheckbox.checked = result.wlTags === true;
+    wlRecordRow.hidden = !wlTagsCheckbox.checked;
+});
+
+wlTagsCheckbox.addEventListener('change', (e) => {
+    wlRecordRow.hidden = !e.target.checked;
+    chrome.storage.local.set({ wlTags: e.target.checked });
+});
+
+const wlDict = translations[detectBrowserLanguage()];
+const wlStatus = document.getElementById('wlStatus');
+const wlButton = document.getElementById('wlCapture');
+
+function renderWlStatus() {
+    chrome.storage.local.get(['wlOrder', 'wlCapturedAt', 'wlCaptureStatus'], (result) => {
+        if (result.wlCaptureStatus === 'running' || result.wlCaptureStatus === 'requested') {
+            wlStatus.textContent = wlDict.wlRunning;
+        } else if (result.wlOrder && result.wlOrder.length && result.wlCapturedAt) {
+            const date = new Date(result.wlCapturedAt).toLocaleDateString(navigator.language);
+            wlStatus.textContent = wlDict.wlDone(result.wlOrder.length, date);
+        } else if (result.wlCaptureStatus === 'error') {
+            wlStatus.textContent = wlDict.wlError;
+        } else {
+            wlStatus.textContent = wlDict.wlNone;
+        }
+    });
+}
+
+// O content.js da aba aberta na playlist escuta este pedido, passa o status para "running" e grava a ordem
+wlButton.addEventListener('click', () => {
+    chrome.storage.local.set({ wlCaptureRequest: Date.now(), wlCaptureStatus: 'requested' });
+    // Se nenhuma aba do Assistir mais tarde assumir o pedido, avisa depois de alguns segundos
+    setTimeout(() => {
+        chrome.storage.local.get(['wlCaptureStatus'], (result) => {
+            if (result.wlCaptureStatus === 'requested') {
+                chrome.storage.local.set({ wlCaptureStatus: 'error' });
+            }
+        });
+    }, 4000);
+});
+
+chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'local' && (changes.wlCaptureStatus || changes.wlOrder)) renderWlStatus();
+});
+renderWlStatus();
