@@ -49,6 +49,4 @@ Também marca cada vídeo da playlist **Assistir mais tarde** com há quanto tem
 
 O idioma do popup (Português/Inglês) é detectado automaticamente a partir do navegador.
 
-<div align="center"><img src="youtube-no-comments/youtube-no-comments.png" alt="youtube-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
-
-<div align="center"><img src="youtube-no-comments/youtube-no-comments-tags.png" alt="youtube-watch-later-tags-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
+<div align="center"><img src="youtube-no-comments/youtube-no-comments.png" alt="youtube-preview" width="68%" style="border-radius:5px;" /> <img src="youtube-no-comments/youtube-no-comments-tags.png" alt="youtube-watch-later-tags-preview" width="27%" style="border-radius:5px;" /></div>
