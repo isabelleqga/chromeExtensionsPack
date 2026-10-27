@@ -145,6 +145,19 @@
       cursor: default;
     }
 
+    .wl-button {
+      flex-shrink: 0;
+      margin-left: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--primary-color);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
     .toggle-hint {
       display: block;
       font-size: 11px;
@@ -172,6 +185,14 @@
         <input type="checkbox" id="sidebar">
         <span class="slider"></span>
       </label>
+    </div>
+
+    <div class="toggle-row">
+      <label class="toggle-label" data-i18n-title="wlHint" title="Open Watch Later, sort by &quot;Date added (oldest)&quot;, then record the order. Switch back to manual sort afterwards.">
+        <span data-i18n="wlTitle">Watch Later tags</span>
+        <span class="toggle-hint" id="wlStatus"></span>
+      </label>
+      <button type="button" id="wlCapture" class="wl-button" data-i18n="wlButton">Record</button>
     </div>
   </div>
 
