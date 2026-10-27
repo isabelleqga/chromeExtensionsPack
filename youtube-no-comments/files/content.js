@@ -92,8 +92,18 @@ function getLevel(addedAt, rank, undatedCount) {
     return position <= 2 / 3 ? 'aging' : 'recent';
 }
 
+// Ao recarregar a extensão, o content.js antigo continua vivo na aba e o chrome.* passa a lançar
+// "Extension context invalidated". Nesse caso ele se desliga em silêncio.
+function extensionAlive() {
+    if (chrome.runtime && chrome.runtime.id) return true;
+    clearTimeout(wlTimer);
+    wlObserver.disconnect();
+    document.removeEventListener('yt-navigate-finish', scheduleUpdate);
+    return false;
+}
+
 function updateTags() {
-    if (!isWatchLater()) return;
+    if (!extensionAlive() || !isWatchLater()) return;
 
     chrome.storage.local.get(WL_KEYS, (data) => {
         // Recurso desligado no popup: remove as tags e não acompanha a lista
@@ -157,6 +167,7 @@ function updateTags() {
 
 let wlTimer = null;
 function scheduleUpdate() {
+    if (!extensionAlive()) return;
     clearTimeout(wlTimer);
     wlTimer = setTimeout(updateTags, 300);
 }
@@ -202,6 +213,6 @@ chrome.storage.onChanged.addListener((changes, area) => {
 
 // O YouTube é uma SPA: reaplica as tags ao navegar e quando a lista é re-renderizada
 document.addEventListener('yt-navigate-finish', scheduleUpdate);
-new MutationObserver(() => { if (isWatchLater()) scheduleUpdate(); })
-    .observe(document.body, { childList: true, subtree: true });
+const wlObserver = new MutationObserver(() => { if (isWatchLater()) scheduleUpdate(); });
+wlObserver.observe(document.body, { childList: true, subtree: true });
 scheduleUpdate();
