@@ -28,7 +28,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
 // ===== Tag de "tempo na lista" na playlist Assistir mais tarde =====
 // A página não expõe a data de inclusão. Por isso a ordem "Data de inclusão (mais antigo)" é
 // gravada uma vez (botão no popup) e os vídeos adicionados depois recebem a data em que foram vistos.
-const WL_KEYS = ['wlOrder', 'wlDates', 'wlCapturedAt'];
+const WL_KEYS = ['wlTags', 'wlOrder', 'wlDates', 'wlCapturedAt'];
 
 const wlStrings = {
     en: {
@@ -96,6 +96,12 @@ function updateTags() {
     if (!isWatchLater()) return;
 
     chrome.storage.local.get(WL_KEYS, (data) => {
+        // Recurso desligado no popup: remove as tags e não acompanha a lista
+        if (data.wlTags !== true) {
+            document.querySelectorAll('.wl-age-tag').forEach((tag) => tag.remove());
+            return;
+        }
+
         let order = data.wlOrder;
         if (!order || !order.length) return; // sem ordem gravada ainda: nada a mostrar
 
@@ -191,7 +197,7 @@ async function captureOrder() {
 chrome.storage.onChanged.addListener((changes, area) => {
     if (area !== 'local') return;
     if (changes.wlCaptureRequest) captureOrder();
-    if (changes.wlOrder || changes.wlDates) scheduleUpdate();
+    if (changes.wlTags || changes.wlOrder || changes.wlDates) scheduleUpdate();
 });
 
 // O YouTube é uma SPA: reaplica as tags ao navegar e quando a lista é re-renderizada

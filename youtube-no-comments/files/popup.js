@@ -7,6 +7,7 @@ const translations = {
         wlTitle: 'Watch Later tags',
         wlHint: 'Open Watch Later, sort by "Date added (oldest)", then record the order. Switch back to manual sort afterwards.',
         wlButton: 'Record',
+        wlButtonHint: 'Only press this if there are videos in your list without a tag. After the first recording, new videos are tagged automatically with the date they were added.',
         wlNone: 'No order recorded yet',
         wlRunning: 'Recording...',
         wlError: 'Open the Watch Later playlist first',
@@ -20,6 +21,7 @@ const translations = {
         wlTitle: 'Tags do Assistir mais tarde',
         wlHint: 'Abra o Assistir mais tarde, ordene por "Data de inclusão (mais antigo)" e grave a ordem. Depois volte para a ordem manual.',
         wlButton: 'Gravar',
+        wlButtonHint: 'Só clique aqui se houver vídeos na lista sem tag. Depois da primeira gravação, os vídeos novos são marcados automaticamente com a data em que foram adicionados.',
         wlNone: 'Nenhuma ordem gravada ainda',
         wlRunning: 'Gravando...',
         wlError: 'Abra primeiro a playlist Assistir mais tarde',
@@ -85,6 +87,20 @@ preferences.forEach(key => {
 });
 
 // ===== Tags de tempo no Assistir mais tarde =====
+// Ao contrário dos outros toggles, este começa desligado; a linha de gravar só aparece quando ligado
+const wlTagsCheckbox = document.getElementById('wlTags');
+const wlRecordRow = document.getElementById('wlRecordRow');
+
+chrome.storage.local.get(['wlTags'], (result) => {
+    wlTagsCheckbox.checked = result.wlTags === true;
+    wlRecordRow.hidden = !wlTagsCheckbox.checked;
+});
+
+wlTagsCheckbox.addEventListener('change', (e) => {
+    wlRecordRow.hidden = !e.target.checked;
+    chrome.storage.local.set({ wlTags: e.target.checked });
+});
+
 const wlDict = translations[detectBrowserLanguage()];
 const wlStatus = document.getElementById('wlStatus');
 const wlButton = document.getElementById('wlCapture');

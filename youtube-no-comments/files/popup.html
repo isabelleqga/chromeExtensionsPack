@@ -145,17 +145,34 @@
       cursor: default;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
+    /* Sem a linha de gravar logo abaixo, o toggle vira o último item e não precisa de borda */
+    .toggle-row:has(+ .toggle-row[hidden]) {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
     .wl-button {
       flex-shrink: 0;
       margin-left: 10px;
-      padding: 6px 12px;
-      border: none;
+      padding: 4px 10px;
+      border: 1px solid var(--slider-bg);
       border-radius: 8px;
-      background-color: var(--primary-color);
-      color: #ffffff;
-      font-size: 12px;
+      background-color: transparent;
+      color: var(--text-color);
+      opacity: 0.75;
+      font-size: 11px;
       font-weight: 500;
       cursor: pointer;
+      transition: opacity 0.2s, background-color 0.2s;
+    }
+
+    .wl-button:hover {
+      opacity: 1;
+      background-color: var(--bg-color);
     }
 
     .toggle-hint {
@@ -188,11 +205,16 @@
     </div>
 
     <div class="toggle-row">
-      <label class="toggle-label" data-i18n-title="wlHint" title="Open Watch Later, sort by &quot;Date added (oldest)&quot;, then record the order. Switch back to manual sort afterwards.">
-        <span data-i18n="wlTitle">Watch Later tags</span>
-        <span class="toggle-hint" id="wlStatus"></span>
+      <label for="wlTags" class="toggle-label" data-i18n="wlTitle" data-i18n-title="wlHint" title="Open Watch Later, sort by &quot;Date added (oldest)&quot;, then record the order. Switch back to manual sort afterwards.">Watch Later tags</label>
+      <label class="switch">
+        <input type="checkbox" id="wlTags">
+        <span class="slider"></span>
       </label>
-      <button type="button" id="wlCapture" class="wl-button" data-i18n="wlButton">Record</button>
+    </div>
+
+    <div class="toggle-row" id="wlRecordRow" hidden>
+      <span class="toggle-hint" id="wlStatus"></span>
+      <button type="button" id="wlCapture" class="wl-button" data-i18n="wlButton" data-i18n-title="wlButtonHint" title="Only press this if there are videos in your list without a tag. After the first recording, new videos are tagged automatically with the date they were added.">Record</button>
     </div>
   </div>
 
