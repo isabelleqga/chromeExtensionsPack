@@ -34,14 +34,14 @@ const wlStrings = {
     en: {
         oldest: (rank) => `#${rank}`,
         today: 'today',
-        day: '1 day',
+        day: 'yesterday',
         days: (n) => `${n} days`,
         tip: (rank) => `Position ${rank} in the waiting order (1 = waiting the longest)`,
     },
     pt: {
         oldest: (rank) => `#${rank}`,
         today: 'hoje',
-        day: '1 dia',
+        day: 'ontem',
         days: (n) => `${n} dias`,
         tip: (rank) => `Posição ${rank} na ordem de espera (1 = espera há mais tempo)`,
     },
@@ -72,8 +72,14 @@ function listFullyLoaded() {
     return !document.querySelector('ytd-playlist-video-list-renderer ytd-continuation-item-renderer');
 }
 
+// Conta dias de calendário (virou a meia-noite = outro dia), não blocos de 24 horas
+function daysSince(addedAt) {
+    const startOfDay = (time) => new Date(time).setHours(0, 0, 0, 0);
+    return Math.round((startOfDay(Date.now()) - startOfDay(addedAt)) / 86400000);
+}
+
 function formatTime(addedAt) {
-    const days = Math.floor((Date.now() - addedAt) / 86400000);
+    const days = daysSince(addedAt);
     if (days <= 0) return wl.today;
     return days === 1 ? wl.day : wl.days(days);
 }
@@ -81,7 +87,7 @@ function formatTime(addedAt) {
 // Cor da tag: vídeos com data usam dias de espera; os só com posição usam o terço da fila em que estão
 function getLevel(addedAt, rank, undatedCount) {
     if (addedAt) {
-        const days = Math.floor((Date.now() - addedAt) / 86400000);
+        const days = daysSince(addedAt);
         if (days < 7) return 'fresh';
         if (days < 14) return 'recent';
         if (days < 30) return 'aging';
