@@ -1,10 +1,11 @@
 const translations = {
     en: {
-        title: 'YouTube No Comments',
+        title: 'YouTube No Noise',
         comments: 'Hide comments',
         commentsHint: "stupidity doesn't take a day off",
         sidebar: 'Hide sidebar',
         posts: 'Hide community posts',
+        topics: 'Hide new topic discovery',
         wlTitle: 'Watch Later tags',
         wlHint: 'Open Watch Later, sort by "Date added (oldest)", then record the order. Switch back to manual sort afterwards.',
         wlButton: 'Record',
@@ -15,11 +16,12 @@ const translations = {
         wlDone: (n, date) => `${n} videos · ${date}`,
     },
     pt: {
-        title: 'YouTube Sem Comentários',
+        title: 'YouTube Sem Ruído',
         comments: 'Ocultar comentários',
         commentsHint: 'estupidez não tira day-off',
         sidebar: 'Ocultar barra lateral',
         posts: 'Ocultar posts da comunidade',
+        topics: 'Ocultar descoberta de novos temas',
         wlTitle: 'Tags do Assistir mais tarde',
         wlHint: 'Abra o Assistir mais tarde, ordene por "Data de inclusão (mais antigo)" e grave a ordem. Depois volte para a ordem manual.',
         wlButton: 'Gravar',
@@ -64,7 +66,7 @@ if (commentsCheckbox) {
 }
 chrome.storage.local.remove('comments');
 
-const preferences = ['sidebar', 'posts'];
+const preferences = ['sidebar', 'posts', 'topics'];
 
 // Ao abrir o popup, carrega o estado salvo dos botões e marca os checkboxes corretamente
 chrome.storage.local.get(preferences, (result) => {

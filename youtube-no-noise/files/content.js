@@ -2,7 +2,7 @@
 document.body.classList.add('hide-comments');
 
 // "Ocultar barra lateral" e "Ocultar posts da comunidade" continuam configuráveis pelo popup
-const preferences = ['sidebar', 'posts'];
+const preferences = ['sidebar', 'posts', 'topics'];
 
 function applyStyles(result) {
     preferences.forEach((key) => {

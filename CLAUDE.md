@@ -20,7 +20,7 @@ Screenshots/preview images referenced by the root `README.md` live alongside eac
 Current extensions:
 - `minimalist-whatsapp/` — hides dozens of WhatsApp Web elements, grouped into three popup tabs (Navbar, Chatlist, Chats); see its own preference-grouping note below
 - `pinterest-feed-width-control/` — controls Pinterest feed column width via a popup slider
-- `youtube-no-comments/` — hides YouTube comments (always on) and lets the sidebar be hidden
+- `youtube-no-noise/` — hides YouTube comments (always on) and lets the sidebar, community posts and the new-topic discovery shelf be hidden
 
 ## Development workflow
 
