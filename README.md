@@ -43,9 +43,14 @@ The popup language (English/Portuguese) is detected automatically from your brow
 <div align="center"><img src="pinterest-feed-width-control/pin-width-control.PNG" alt="pinterest-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
 
 ### 🤫 Youtube No Noise
-Permanently hides comments on every YouTube video. It also removes every sidebar item except **Home**, **Subscriptions**, **History**, **Playlists**, and **Watch later**, and has two toggles for the rest of the noise: **Hide community posts** (the posts from channels in your feed, on channel Posts tabs and in home sections) and **Hide new topic discovery** (the "Advanced discovery of new topics" shelf with topic chips on the home page). Both are on by default.
+Cuts the clutter out of YouTube:
+- **Comments** — always hidden.
+- **Sidebar** — only **Home**, **Subscriptions**, **History**, **Playlists** and **Watch later** stay.
+- **Community posts** — hidden in the feed, on channel Posts tabs and in home sections.
+- **New topic discovery** — hides the "Advanced discovery of new topics" shelf on the home page.
 
-It also tags each video in your **Watch later** playlist with how long it has been waiting. YouTube doesn't expose the date a video was added, so you record the order once (sort by *Date added (oldest)*, then turn on **Watch Later tags** in the popup and press **Record**). Those videos show "#N", and videos added afterwards show the real number of days. A colored dot shows how long a video has been waiting: blue (under 7 days), green (7 to 13), orange (14 to 29) and red (30 or more). The "#N" tags use the same colors by thirds of the list, with the oldest third in red.
+**Extra feature:**
+- **Watch Later tags** — shows how long each video has been waiting, with a colored dot from blue (new) to red (30+ days). Turn it on in the popup and press **Record** once, with the list sorted by *Date added (oldest)*.
 
 The popup language (English/Portuguese) is detected automatically from your browser.
 
