@@ -42,11 +42,11 @@ O idioma do popup (Português/Inglês) é detectado automaticamente a partir do 
 
 <div align="center"><img src="pinterest-feed-width-control/pin-width-control.PNG" alt="pinterest-preview" width="auto" height="auto" style="border-radius:5px;" /></div>
 
-### 🤫 Youtube Sem Comentários
-Oculta definitivamente os comentários de todos os vídeos do Youtube. De brinde, remove todos os itens da barra lateral, menos **Início**, **Inscrições**, **Histórico**, **Playlists** e **Assistir mais tarde**.
+### 🤫 Youtube Sem Ruído
+Oculta definitivamente os comentários de todos os vídeos do Youtube. Também remove todos os itens da barra lateral, menos **Início**, **Inscrições**, **Histórico**, **Playlists** e **Assistir mais tarde**, e tem dois botões para o resto do ruído: **Ocultar posts da comunidade** (os posts de canais no seu feed, nas abas Posts dos canais e nas seções da página inicial) e **Ocultar descoberta de novos temas** (a seção "Descoberta avançada de novos temas", com chips de assuntos, na página inicial). Os dois vêm ativados por padrão.
 
 Também marca cada vídeo da playlist **Assistir mais tarde** com há quanto tempo ele está esperando. O YouTube não expõe a data de inclusão, então você grava a ordem uma vez (ordene por *Data de inclusão (mais antigo)* e, no popup, ative **Tags do Assistir mais tarde** e clique em **Gravar**). Esses vídeos mostram "#N", e os adicionados depois mostram o número real de dias. Uma bolinha colorida indica há quanto tempo o vídeo espera: azul (menos de 7 dias), verde (7 a 13), laranja (14 a 29) e vermelho (30 ou mais). As tags "#N" usam as mesmas cores por terços da lista, com o terço mais antigo em vermelho.
 
 O idioma do popup (Português/Inglês) é detectado automaticamente a partir do navegador.
 
-<div align="center"><img src="youtube-no-comments/youtube-no-comments.png" alt="youtube-preview" width="68%" style="border-radius:5px;" /> <img src="youtube-no-comments/youtube-no-comments-tags.png" alt="youtube-watch-later-tags-preview" width="27%" style="border-radius:5px;" /></div>
+<div align="center"><img src="youtube-no-noise/youtube-no-noise.png" alt="youtube-preview" width="68%" style="border-radius:5px;" /> <img src="youtube-no-noise/youtube-no-noise-tags.png" alt="youtube-watch-later-tags-preview" width="27%" style="border-radius:5px;" /></div>

@@ -21,6 +21,20 @@ body.hide-sidebar #footer.style-scope.ytd-guide-renderer {
     display: none !important;
 }
 
+/* Ocultar posts da comunidade (feed, aba Posts dos canais e seções "Posts" da página inicial) */
+body.hide-posts ytd-post-renderer,
+body.hide-posts ytd-backstage-post-thread-renderer,
+body.hide-posts ytd-rich-section-renderer:has(ytd-post-renderer) {
+    display: none !important;
+}
+
+/* Ocultar a seção "Descoberta avançada de novos temas" da página inicial (prateleira com chips de assunto).
+   A barra de chips do topo do feed fica fora de ytd-rich-section-renderer, então não é afetada. */
+body.hide-topics ytd-rich-section-renderer:has(ytd-chips-shelf-with-video-shelf-renderer),
+body.hide-topics ytd-chips-shelf-with-video-shelf-renderer {
+    display: none !important;
+}
+
 /* Tag de tempo na lista (Assistir mais tarde): selo escuro com uma bolinha colorida */
 ytd-playlist-video-renderer ytd-thumbnail {
     position: relative;
