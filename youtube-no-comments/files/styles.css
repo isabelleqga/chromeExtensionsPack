@@ -21,6 +21,13 @@ body.hide-sidebar #footer.style-scope.ytd-guide-renderer {
     display: none !important;
 }
 
+/* Ocultar posts da comunidade (feed, aba Posts dos canais e seções "Posts" da página inicial) */
+body.hide-posts ytd-post-renderer,
+body.hide-posts ytd-backstage-post-thread-renderer,
+body.hide-posts ytd-rich-section-renderer:has(ytd-post-renderer) {
+    display: none !important;
+}
+
 /* Tag de tempo na lista (Assistir mais tarde): selo escuro com uma bolinha colorida */
 ytd-playlist-video-renderer ytd-thumbnail {
     position: relative;
